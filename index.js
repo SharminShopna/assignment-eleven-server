@@ -9,6 +9,7 @@ const port = process.env.PORT || 5000;
 
 app.use(cors({
   origin:[
+    'http://localhost:5173',
     'http://localhost:5174',
     'https://assignment-eleven-3bd98.web.app',
     'https://assignment-eleven-3bd98.firebaseapp.com'
@@ -77,7 +78,7 @@ async function run() {
   app.post('/jwt', (req,res)=>{
     const user = req.body;
     const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
-      expiresIn:'24h'});
+      expiresIn:'120h'});
 
       res
        .cookie('token', token, {
